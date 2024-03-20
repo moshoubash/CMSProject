@@ -1,6 +1,11 @@
+using CMSProject.Code;
 using CMSProject.Data;
+using CMSProject.Data.Context;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication;
+using CMSProject.Core;
 
 namespace CMSProject
 {
@@ -19,6 +24,14 @@ namespace CMSProject
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddRazorPages();
+            builder.Services.AddSingleton<IEmailSender, EmailSender>();
+            builder.Services.AddAuthorization(op => {
+                    op.AddPolicy("User", claim => claim.RequireClaim("User", "User"));
+                    op.AddPolicy("Admin", claim => claim.RequireClaim("Admin", "Admin"));
+                }
+            ) ;
+            builder.Services.AddMvc(op => op.EnableEndpointRouting = false);
+            builder.Services.AddSingleton<IDataHelper<Category>, CategoryEntity>();
 
             var app = builder.Build();
 
@@ -38,7 +51,7 @@ namespace CMSProject
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseMvcWithDefaultRoute();
             app.UseAuthorization();
 
             app.MapRazorPages();

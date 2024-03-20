@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-
+using CMSProject.Core;
 namespace CMSProject.Data
 {
     public class ApplicationDbContext : IdentityDbContext
