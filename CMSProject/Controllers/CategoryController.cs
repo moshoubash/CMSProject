@@ -1,7 +1,7 @@
-﻿using CMSProject.Data;
-using CMSProject.Core;
+﻿using CMSProject.Core;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using CMSProject.Data.Repository;
 
 namespace CMSProject.Controllers
 {

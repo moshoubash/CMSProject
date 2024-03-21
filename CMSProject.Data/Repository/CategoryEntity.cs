@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using CMSProject.Core;
 using CMSProject.Data.Context;
 
-namespace CMSProject.Data.Context
+namespace CMSProject.Data.Repository
 {
-    public class CategoryEntity : IDataHelper<Category> { 
-        
+    public class CategoryEntity : IDataHelper<Category>
+    {
+
         private readonly MyDBContext _database;
-        
+
         public CategoryEntity(MyDBContext database)
         {
             _database = database;
@@ -57,5 +58,5 @@ namespace CMSProject.Data.Context
         }
 
     }
-   
+
 }

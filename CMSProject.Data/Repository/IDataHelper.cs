@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CMSProject.Data
+namespace CMSProject.Data.Repository
 {
     public interface IDataHelper<Table>
     {
         List<Table> GetAllData();
-        List<Table> GetDataByUser(int User_Id); 
-        List<Table> Search(string SearchItem); 
+        List<Table> GetDataByUser(int User_Id);
+        List<Table> Search(string SearchItem);
         Table Find(int User_Id);
 
         void Add(Table table);

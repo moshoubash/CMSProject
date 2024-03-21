@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication;
 using CMSProject.Core;
+using CMSProject.Data.Repository;
 
 namespace CMSProject
 {
