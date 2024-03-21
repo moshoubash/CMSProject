@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication;
 using CMSProject.Core;
 using CMSProject.Data.Repository;
+using System.Configuration;
 
 namespace CMSProject
 {
@@ -18,8 +19,13 @@ namespace CMSProject
 
             // Add services to the container.
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+            
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
+            builder.Services.AddDbContext<MyDBContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
@@ -32,7 +38,7 @@ namespace CMSProject
                 }
             ) ;
             builder.Services.AddMvc(op => op.EnableEndpointRouting = false);
-            builder.Services.AddSingleton<IDataHelper<Category>, CategoryEntity>();
+            builder.Services.AddTransient<IDataHelper<Category>, CategoryEntity>();
 
             var app = builder.Build();
 

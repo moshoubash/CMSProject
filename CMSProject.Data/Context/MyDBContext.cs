@@ -10,6 +10,10 @@ namespace CMSProject.Data.Context
 {
     public class MyDBContext : DbContext
     {
+        public MyDBContext(DbContextOptions<MyDBContext> dbContext) : base(dbContext)
+        {
+            
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=DESKTOP-J08CACC;Database=CMSDataBase;Encrypt=false ;Trusted_Connection=True");
