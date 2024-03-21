@@ -12,7 +12,7 @@ namespace CMSProject.Data.Context
     {
         public MyDBContext(DbContextOptions<MyDBContext> dbContext) : base(dbContext)
         {
-            
+
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

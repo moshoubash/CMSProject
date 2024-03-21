@@ -44,7 +44,7 @@ namespace CMSProject.Controllers
         // GET: CategoryController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(_dataHelper.Find(id));
         }
 
         // POST: CategoryController/Edit/5
